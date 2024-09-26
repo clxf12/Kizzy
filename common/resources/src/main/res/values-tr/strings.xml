@@ -91,4 +91,9 @@
     <string name="share_config">Yapılandırma Paylaş</string>
     <string name="change_log">Değişim Kaydı</string>
     <string name="update">Güncelle</string>
+    <string name="configs_directory">Yapılandırma Dizini</string>
+    <string name="custom_activity_type">Özel Aktivite Türü</string>
+    <string name="custom_activity_type_desc">Varsayılan aktivite türünü geçersiz kılar. Yalnızca Medya ve Experimental RPC için çalışır</string>
+    <string name="custom_activity_status">Özel Aktivite Durumu</string>
+    <string name="custom_activity_status_desc">Varsayılan aktivite durumunu geçersiz kılar</string>
 </resources>

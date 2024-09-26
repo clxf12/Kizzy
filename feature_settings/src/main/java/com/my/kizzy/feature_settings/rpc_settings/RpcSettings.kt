@@ -33,6 +33,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.SmartButton
 import androidx.compose.material.icons.filled.Storage
 import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -96,6 +97,7 @@ fun RpcSettings(onBackPressed: () -> Boolean) {
     var setLastRunRpcConfigOption by remember {
         mutableStateOf(Prefs[Prefs.APPLY_FIELDS_FROM_LAST_RUN_RPC, false])
     }
+    var isSamsungRpcEnabled by remember { mutableStateOf(Prefs[Prefs.SAMSUNG_RPC_ENABLED, false]) }
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
         LargeTopAppBar(title = {
             Text(
@@ -111,7 +113,7 @@ fun RpcSettings(onBackPressed: () -> Boolean) {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
                 item {
                     SettingItem(
-                        title = "Configs Directory",
+                        title = stringResource(id = R.string.configs_directory),
                         description = configsDir,
                         icon = Icons.Default.Storage,
                     ) {
@@ -143,8 +145,8 @@ fun RpcSettings(onBackPressed: () -> Boolean) {
             }
             item {
                 SettingItem(
-                    title = "Custom Activity Type",
-                    description = "Overrides the default activity type. Works for media and experimental rpc only",
+                    title = stringResource(id = R.string.custom_activity_type),
+                    description = stringResource(id = R.string.custom_activity_type_desc),
                     icon = Icons.Default.Code
                 ) {
                     showActivityTypeDialog = true
@@ -153,8 +155,8 @@ fun RpcSettings(onBackPressed: () -> Boolean) {
             }
             item {
                 SettingItem(
-                    title = "Custom Activity Status",
-                    description = "Overrides the default activity status",
+                    title = stringResource(id = R.string.custom_activity_status),
+                    description = stringResource(id = R.string.custom_activity_status_desc),
                     icon = Icons.Default.DoNotDisturbOn
                 ) {
                     showActivityStatusDialog = true
@@ -173,6 +175,18 @@ fun RpcSettings(onBackPressed: () -> Boolean) {
             }
             item {
                 Subtitle(text = stringResource(id = R.string.advance_settings))
+            }
+            item {
+                PreferenceSwitch(
+                    title = "Enable Samsung Rpc",
+                    description = "Enables Samsung Rpc for verified users. \n" +
+                            "It will be removed from next update.",
+                    icon = Icons.Default.Warning,
+                    isChecked = isSamsungRpcEnabled
+                ) {
+                    isSamsungRpcEnabled = !isSamsungRpcEnabled
+                    Prefs[Prefs.SAMSUNG_RPC_ENABLED] = isSamsungRpcEnabled
+                }
             }
             item {
                 PreferenceSwitch(

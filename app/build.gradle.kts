@@ -11,7 +11,6 @@ android {
 
     defaultConfig {
         applicationId = "com.my.kizzy"
-        targetSdk = 33
         versionCode = libs.versions.version.code.get().toInt()
         versionName = libs.versions.version.name.get()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -26,6 +25,16 @@ android {
     }
 
     packagingOptions.resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+
+    // Disables dependency metadata when building APKs.
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        // This is for the signed .apk that we post to GitHub releases
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        // This is for the Google Play Store if we ever decide to publish there
+        includeInBundle = true
+    }
 }
 dependencies {
     implementation (projects.domain)

@@ -92,4 +92,9 @@
     <string name="share_config">اشتراک گذاری پیکربندی</string>
     <string name="change_log">گذارش تغییرات</string>
     <string name="update">به روزرسانی</string>
+    <string name="configs_directory">تنظیمات دایرکتوری</string>
+    <string name="custom_activity_type">نوع فعالیت سفارشی</string>
+    <string name="custom_activity_type_desc">نوع فعالیت پیش‌فرض را لغو می‌کند. فقط برای رسانه و rpc آزمایشی کار می کند</string>
+    <string name="custom_activity_status">وضعیت فعالیت سفارشی</string>
+    <string name="custom_activity_status_desc">وضعیت فعالیت پیش‌فرض را لغو می‌کند</string>
 </resources>
